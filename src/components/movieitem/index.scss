@@ -1,0 +1,10 @@
+.movie_wrapper {
+  .text {
+    @media (max-width: 375px) {
+      -webkit-line-clamp: 3;
+    }
+  }
+  @media (max-width: 768px) {
+    padding-left: 0px !important;
+  }
+}

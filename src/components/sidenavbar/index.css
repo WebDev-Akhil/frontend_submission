@@ -1,0 +1,27 @@
+.sidebar_main_head .humberger img {
+  width: 40px;
+  height: auto; }
+
+@media (min-width: 968px) {
+  .sidebar_main_head .humberger {
+    display: none; } }
+
+.sidebar_main_head .side_nav_cont .saved-title {
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px; }
+
+.sidebar_main_head .side_nav_cont .nav_icon img {
+  width: 24px;
+  height: auto; }
+
+.sidebar_main_head .side_nav_cont .header_chunk,
+.sidebar_main_head .side_nav_cont .menu_nav_link {
+  padding-left: 35px; }
+
+@media (min-width: 0px) {
+  .sidebar_main_head .side_nav_cont {
+    display: none; } }
+
+@media (min-width: 968px) {
+  .sidebar_main_head .side_nav_cont {
+    display: block; } }
