@@ -1,5 +1,22 @@
 # cord Coding Challenge (Front-end)
 
+
+### FINAL RESULT:
+
+1. ![alt text](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Screenshot%202021-11-08%20at%2015.03.47.png)
+2. ![alt text](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Screenshot%202021-11-08%20at%2015.05.17.png)
+
+
+
+### FUTURE WORK:
+
+1. Search API was implemented but search bar still needs to be worked upon to accept user input and show results
+2. Automated Tests (Preferably using Cypress)
+3. SPA is responsive to an extent (upto tablets) but should be made more responsive for mobile phones as well
+
+
+_________________________________________________________________
+
 ### Introduction 
 Welcome! This coding challenge is designed to explore your React & SCSS frontend skills. You will have to create a simple SPA based off the provided mockup and make a few API calls to a public web API.
 
