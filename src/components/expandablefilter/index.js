@@ -3,8 +3,9 @@ import styled from "styled-components";
 import collapseIcon from "../../images/collapse.png";
 import uncollapseIcon from "../../images/uncollapse.png";
 import Checkbox from "../checkbox";
+import { withRouter } from "react-router-dom";
 
-export default class ExpandableFilter extends React.Component {
+class ExpandableFilter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,28 +14,66 @@ export default class ExpandableFilter extends React.Component {
       activeKey: 0,
       bodyHeight: 0,
       checked: false,
-      categoriesIds: [],
+      generesIds: [],
+      generesIds: [],
+      minVotesIds: [],
+      langsIds: [],
       categoryQuery: "",
     };
   }
 
-  handleCheckboxChange = (event) => {
-    const { categoriesIds } = this.state;
+  handleCheckboxChange = (event, key) => {
+    const { generesIds, minVotesIds, langsIds } = this.state;
+    console.log(generesIds.length, "genereids");
+    console.log(langsIds.length, "langsIds");
 
-    if (event.target.checked && !categoriesIds.includes(event.target.value)) {
-      categoriesIds.push(event.target.value);
+    if (
+      key === 0 &&
+      event.target.checked &&
+      !generesIds.includes(event.target.value)
+    ) {
+      generesIds.push(event.target.value);
     } else {
-      categoriesIds.splice(categoriesIds.indexOf(event.target.value), 1);
+      key === 0 && generesIds.splice(generesIds.indexOf(event.target.value), 1);
     }
+
+    if (
+      key === 1 &&
+      event.target.checked &&
+      !minVotesIds.includes(event.target.value)
+    ) {
+      minVotesIds.push(event.target.value);
+    } else {
+      key === 1 &&
+        minVotesIds.splice(minVotesIds.indexOf(event.target.value), 1);
+    }
+
+    // console.log(event.target.value, "value");
+    if (
+      key === 2 &&
+      event.target.checked &&
+      !langsIds.includes(event.target.value)
+    ) {
+      langsIds.push(event.target.value);
+    } else {
+      key === 2 && langsIds.splice(langsIds.indexOf(event.target.value), 1);
+    }
+
+    const query = `${
+      generesIds.length > 0 ? "categories=" + generesIds.join(",") + "&" : ""
+    }${langsIds.length > 0 ? "language=" + langsIds.join(",") + "&" : ""}${
+      minVotesIds.length > 0 ? "vote_average_lte=" + minVotesIds.join(",") : ""
+    }`;
     this.setState(
       {
         checked: event.target.checked,
-        categoriesIds: categoriesIds,
-        categoryQuery: categoriesIds.length > 0 ? categoriesIds.join(",") : "",
+        generesIds,
+        langsIds,
+        minVotesIds,
+        categoryQuery: query,
       },
       () => {
-        console.log("hello");
-        console.log(this.props);
+        this.props.history.push(`/discover?${this.state.categoryQuery}`);
       }
     );
   };
@@ -74,7 +113,9 @@ export default class ExpandableFilter extends React.Component {
                       name={item.name}
                       id={item.id}
                       checked={this.state.checked}
-                      handleCheckboxChange={this.handleCheckboxChange}
+                      handleCheckboxChange={(event) =>
+                        this.handleCheckboxChange(event, category._id)
+                      }
                     />
                     <span style={{ marginLeft: 8 }}>{item.name}</span>
                   </Label>
@@ -121,3 +162,5 @@ const Label = styled.label`
   font-size: 18px;
   margin-bottom: 5px;
 `;
+
+export default withRouter(ExpandableFilter);
