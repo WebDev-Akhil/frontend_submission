@@ -34,7 +34,7 @@ export default class SearchFilters extends React.Component {
           {/* Implement a "SearchBar" component and re-use it for the keyword and the year inputs */}
         </SearchFiltersCont>
         <SearchFiltersCont>
-          <CategoryTitle>Movies</CategoryTitle>
+          <CategoryTitle>Movie</CategoryTitle>
           <ExpandableFilter categories={categories} />
           {/* Implement a component called "ExpandableFilter" and apply it to all filter categories */}
         </SearchFiltersCont>
