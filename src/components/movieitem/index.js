@@ -25,7 +25,7 @@ export default class MovieItem extends React.Component {
             <MovieTitle>{movie?.title}</MovieTitle>
             <MovieRating bg={"yellowishBg"}>{movie?.vote_average}</MovieRating>
           </MovieHeader>
-          <MovieSubTitle>PK | Hell</MovieSubTitle>
+          <MovieSubTitle color={"yellowishBg"}>{movie?.original_language}</MovieSubTitle>
           <MovieText className="text">{movie?.overview}</MovieText>
           <PublishDate color={"yellowishBg"}>{movie?.release_date}</PublishDate>
         </RightCont>
@@ -80,9 +80,15 @@ const MovieRating = styled.h6`
     props.bg === "yellowishBg" ? colors.yellowishBg : "none"};
 `;
 
-const MovieSubTitle = styled.span``;
+const MovieSubTitle = styled.span`
+  font-size: 14px;
+  font-weight: 800;
+  color: ${(props) =>
+  props.color === "yellowishBg" ? colors.yellowishBg : "black"}
+  `;
 
 const PublishDate = styled.span`
+  font-weight: 800;
   position: absolute;
   bottom: 8%;
   font-size: 12px;
