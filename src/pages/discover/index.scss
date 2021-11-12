@@ -1,5 +1,11 @@
 .movie_results {
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
     width: 100% !important;
+  }
+}
+
+.movie-filter {
+  @media (max-width: 576px) {
+    display: none;
   }
 }

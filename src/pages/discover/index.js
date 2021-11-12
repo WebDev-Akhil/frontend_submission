@@ -39,9 +39,22 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     if (this.props.location.search) {
-      const { categories } = queryString.parse(this.props.location.search);
-      this.getMoviesBySearch(categories);
+      const { categories, language, vote_average_lte } = queryString.parse(
+        this.props.location.search
+      );
+
+      this.getMoviesBySearch(categories, language, vote_average_lte);
     } else this.getPopularMovies();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      const { categories, language, vote_average_lte } = queryString.parse(
+        this.props.location.search
+      );
+
+      this.getMoviesBySearch(categories, language, vote_average_lte);
+    }
   }
 
   getPopularMovies = () => {
@@ -56,8 +69,14 @@ export default class Discover extends React.Component {
     });
   };
 
-  getMoviesBySearch = (categories = "") => {
-    const query = `${categories ? `&with_genres=${categories}` : ""} `;
+  getMoviesBySearch = (
+    categories = "",
+    languages = "",
+    vote_average_lte = ""
+  ) => {
+    const query = `${categories ? `&with_genres=${categories}` : ""}${
+      languages ? `&language=${languages}` : ""
+    }${vote_average_lte ? `&vote_average.lte=${vote_average_lte}` : ""} `;
     this.api.getPopularMovies(query).then((response) => {
       const {
         data: { results, total_results },
@@ -86,7 +105,7 @@ export default class Discover extends React.Component {
       <DiscoverWrapper className="flex discover-wrapper">
         {/* <MobilePageTitle>Discover</MobilePageTitle>{" "} */}
         {/* MobilePageTitle should become visible on small screens & mobile devices*/}
-        <MovieFilters>
+        <MovieFilters className="movie-filter">
           <SearchFilters
             genres={genreOptions}
             ratings={ratingOptions}
@@ -96,11 +115,15 @@ export default class Discover extends React.Component {
         </MovieFilters>
         <MovieResults className="movie_results">
           {totalCount > 0 && <TotalCounter>{totalCount} Movies</TotalCounter>}
-          <MovieList
-            movies={results || []}
-            genres={genreOptions || []}
-            totalCount={totalCount}
-          />
+          {results.length > 0 ? (
+            <MovieList
+              movies={results || []}
+              genres={genreOptions || []}
+              totalCount={totalCount}
+            />
+          ) : (
+            <h1> No results found </h1>
+          )}
         </MovieResults>
       </DiscoverWrapper>
     );

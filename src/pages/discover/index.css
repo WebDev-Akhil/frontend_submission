@@ -1,3 +1,7 @@
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .movie_results {
     width: 100% !important; } }
+
+@media (max-width: 576px) {
+  .movie-filter {
+    display: none; } }
