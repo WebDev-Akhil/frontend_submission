@@ -1,18 +1,28 @@
-# cord Coding Challenge (Front-end)
+# Cord Coding Challenge (Front-end)
 
 
 ### FINAL RESULT:
+Large Screen: 
+ ![Large Screen](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Large%20Screen.png)
 
-1. ![alt text](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Screenshot%202021-11-08%20at%2015.03.47.png)
-2. ![alt text](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Screenshot%202021-11-08%20at%2015.05.17.png)
+Medium Screen (Tablets): 
+ ![Medium Screen](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Medium%20Screen.png)
+ 
+Small Screen (Phones): 
+ ![Small Screen](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Small%20Screen.png)
 
 
+### 12/11/2021 - UPDATE (last 24 hours):
+
+1. SPA is made responsive to all kinds of screens 
+2. Filter options are enabled and now can filter movies based on Genre, Min. Votings & Languages
+3. SPA is now live. Deployed to Vercel : https://frontend-submission.vercel.app/discover
+4. Cypress was setup and linked with cypress account to see tests stats in the dashboard
+5. Minor style tweaks
 
 ### FUTURE WORK:
 
 1. Search API was implemented but search bar still needs to be worked upon to accept user input and show results
-2. Automated Tests (Preferably using Cypress)
-3. SPA is responsive to an extent (upto tablets) but should be made more responsive for mobile phones as well
 
 
 _________________________________________________________________
