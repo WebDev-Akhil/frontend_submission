@@ -31,6 +31,7 @@ Search Example (Keyword : cord):
 2. Added Search and filter options for small screens as well
 3. Added Genere data to Preview cards on discover page
 
+NOTE: Search bar and filters are independent. Practically, they both should work together to filter out the search reulsts after taking the user input but as of now, the MovieDB API does not support the Discover API endpoints to work along with filters.
 
 ### FUTURE WORK:
 
