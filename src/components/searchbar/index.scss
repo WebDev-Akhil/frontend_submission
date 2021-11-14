@@ -1,0 +1,41 @@
+.date-input {
+    position: relative;
+    flex-direction: row-reverse;
+    &::-webkit-inner-spin-button,
+    &::-webkit-clear-button {
+      display: block;
+    }
+  
+    &::-webkit-calendar-picker-indicator {
+      color: rgba(0, 0, 0, 0);
+      opacity: 1;
+      display: none;
+    }
+  }
+  
+  .show-date {
+    &::-webkit-calendar-picker-indicator {
+      display: block !important;
+      position: absolute;
+      left: -20px;
+      z-index: 1000;
+      width: 50px;
+      background: transparent;
+    }
+  }
+  
+  .input-date-main {
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+  
+  .filter_mobile {
+    display: none;
+    @media (max-width: 576px) {
+      left: 100% !important;
+      width: 50px !important;
+      display: block;
+    }
+  }
+  

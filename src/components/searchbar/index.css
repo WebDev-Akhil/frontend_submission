@@ -1,0 +1,33 @@
+.date-input {
+    position: relative;
+    flex-direction: row-reverse; }
+  
+  .date-input::-webkit-inner-spin-button, .date-input::-webkit-clear-button {
+    display: block; }
+  
+  .date-input::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: none; }
+  
+  .show-date::-webkit-calendar-picker-indicator {
+    display: block !important;
+    position: absolute;
+    left: -20px;
+    z-index: 1000;
+    width: 50px;
+    background: transparent; }
+  
+  @media (max-width: 576px) {
+    .input-date-main {
+      display: none; } }
+  
+  .filter_mobile {
+    display: none; }
+  
+  @media (max-width: 576px) {
+    .filter_mobile {
+      left: 100% !important;
+      width: 50px !important;
+      display: block; } }
+  
