@@ -48,13 +48,13 @@ export default class SideNavBar extends React.Component {
             </NavIcon>
           </SideNavMainLink>
           <SideNavHeader className="header_chunk Pt-2">
-            <HeaderText className="Pt-3 saved-title">Watched</HeaderText>
+            <HeaderText>Watched</HeaderText>
             <SideNavLinks className={`flex flex-column Pt-2 sideNav`}>
               <NavLink className="Pt-1 Pb-1 " to="/watched/movies">
                 Movies
               </NavLink>
               <NavLink className="Pt-1 Pb-1 " to="/watched/tv-shows">
-                TV Shows
+                Tv Shows
               </NavLink>
             </SideNavLinks>
           </SideNavHeader>
@@ -62,11 +62,11 @@ export default class SideNavBar extends React.Component {
           <SideNavHeader className="header_chunk">
             <HeaderText className="Pt-3 saved-title">Saved</HeaderText>
             <SideNavLinks className={`flex flex-column Pt-2 sideNav`}>
-              <NavLink className="Pt-1 Pb-1 " to="/saved/movies">
+              <NavLink className="Pt-1 Pb-1 " to="/watched/movies">
                 Movies
               </NavLink>
-              <NavLink className="Pt-1 Pb-1 " to="/saved/tv-shows">
-                TV Shows
+              <NavLink className="Pt-1 Pb-1 " to="/watched/tv-shows">
+                Tv Shows
               </NavLink>
             </SideNavLinks>
           </SideNavHeader>

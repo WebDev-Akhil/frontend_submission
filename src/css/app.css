@@ -86,3 +86,6 @@ textarea {
 @media (max-width: 968px) {
   .ContentWrapper {
     padding-left: 0px !important; } }
+
+.show {
+  display: block !important; }

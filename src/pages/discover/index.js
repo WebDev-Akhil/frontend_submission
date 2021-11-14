@@ -39,21 +39,41 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     if (this.props.location.search) {
-      const { categories, language, vote_average_lte } = queryString.parse(
-        this.props.location.search
-      );
+      const {
+        categories,
+        language,
+        vote_average_lte,
+        search,
+        primary_release_year,
+      } = queryString.parse(this.props.location.search);
 
-      this.getMoviesBySearch(categories, language, vote_average_lte);
+      this.getMoviesBySearch(
+        categories,
+        language,
+        vote_average_lte,
+        search,
+        primary_release_year
+      );
     } else this.getPopularMovies();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) {
-      const { categories, language, vote_average_lte } = queryString.parse(
-        this.props.location.search
-      );
+      const {
+        categories,
+        language,
+        vote_average_lte,
+        search,
+        primary_release_year,
+      } = queryString.parse(this.props.location.search);
 
-      this.getMoviesBySearch(categories, language, vote_average_lte);
+      this.getMoviesBySearch(
+        categories,
+        language,
+        vote_average_lte,
+        search,
+        primary_release_year
+      );
     }
   }
 
@@ -72,11 +92,19 @@ export default class Discover extends React.Component {
   getMoviesBySearch = (
     categories = "",
     languages = "",
-    vote_average_lte = ""
+    vote_average_lte = "",
+    sort_by = "",
+    primary_release_year = ""
   ) => {
     const query = `${categories ? `&with_genres=${categories}` : ""}${
       languages ? `&language=${languages}` : ""
-    }${vote_average_lte ? `&vote_average.lte=${vote_average_lte}` : ""} `;
+    }${vote_average_lte ? `&vote_average.lte=${vote_average_lte}` : ""}${
+      sort_by ? `&sort_by=${sort_by}` : ""
+    }${
+      primary_release_year
+        ? `& primary_release_year=${primary_release_year}`
+        : ""
+    }`;
     this.api.getPopularMovies(query).then((response) => {
       const {
         data: { results, total_results },
@@ -143,11 +171,17 @@ const TotalCounter = styled.div`
 
 const MovieResults = styled.div`
   width: 60%;
+  @media (max-width: 576px) {
+    width: 100% !important;
+  }
 `;
 
 const MovieFilters = styled.div`
   width: 40%;
   padding: 30px 10px 0px;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 `;
 
 const MobilePageTitle = styled.header``;
