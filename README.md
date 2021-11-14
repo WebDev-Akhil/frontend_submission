@@ -10,6 +10,10 @@ Medium Screen (Tablets):
  
 Small Screen (Phones): 
  ![Small Screen](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Small%20Screen.png)
+ 
+Search Example (Keyword : cord): 
+ ![Search illustration](https://github.com/WebDev-Akhil/frontend_submission/blob/master/Final%20Result/Search%20example.png)
+ 
 
 
 ### 12/11/2021 - UPDATE (last 24 hours):
@@ -26,7 +30,6 @@ Small Screen (Phones):
 1. Search and filter options are completely functioning. User can search for a keyword
 2. Added Search and filter options for small screens as well
 3. Added Genere data to Preview cards on discover page
-4. Cypress was setup and linked with cypress account to see tests stats in the dashboard
 
 
 ### FUTURE WORK:
