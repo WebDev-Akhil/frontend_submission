@@ -14,6 +14,13 @@ class API {
     );
   }
 
+  getMovies(queryStr = "") {
+    return axios.get(
+      this.apiBaseUrl +
+        `/search/movie?api_key=8134434a46fcca75ff3a29addbf19274${queryStr}`
+    );
+  }
+
   handleError(error) {
     console.log(error.message);
   }

@@ -47,13 +47,15 @@ export default class Discover extends React.Component {
         primary_release_year,
       } = queryString.parse(this.props.location.search);
 
-      this.getMoviesBySearch(
-        categories,
-        language,
-        vote_average_lte,
-        search,
-        primary_release_year
-      );
+      if (search || primary_release_year) {
+        this.getMoviesBySearch(search, primary_release_year);
+        return;
+      }
+
+      if (categories || language || vote_average_lte) {
+        this.getMoviesByCategories(categories, language, vote_average_lte);
+        return;
+      }
     } else this.getPopularMovies();
   }
 
@@ -67,13 +69,15 @@ export default class Discover extends React.Component {
         primary_release_year,
       } = queryString.parse(this.props.location.search);
 
-      this.getMoviesBySearch(
-        categories,
-        language,
-        vote_average_lte,
-        search,
-        primary_release_year
-      );
+      if (search || primary_release_year) {
+        this.getMoviesBySearch(search, primary_release_year);
+        return;
+      }
+
+      if (categories || language || vote_average_lte) {
+        this.getMoviesByCategories(categories, language, vote_average_lte);
+        return;
+      }
     }
   }
 
@@ -89,22 +93,33 @@ export default class Discover extends React.Component {
     });
   };
 
-  getMoviesBySearch = (
+  getMoviesBySearch = (sort_by = "", primary_release_year = "") => {
+    const query = `${sort_by ? `&query=${sort_by || ""}` : `&query=""`}${
+      primary_release_year
+        ? `&primary_release_year=${primary_release_year}`
+        : ""
+    }`;
+
+    this.api.getMovies(query).then((response) => {
+      const {
+        data: { results, total_results },
+      } = response;
+      this.setState({
+        results,
+        totalCount: total_results,
+      });
+    });
+  };
+
+  getMoviesByCategories = (
     categories = "",
     languages = "",
-    vote_average_lte = "",
-    sort_by = "",
-    primary_release_year = ""
+    vote_average_lte = ""
   ) => {
     const query = `${categories ? `&with_genres=${categories}` : ""}${
       languages ? `&language=${languages}` : ""
-    }${vote_average_lte ? `&vote_average.lte=${vote_average_lte}` : ""}${
-      sort_by ? `&sort_by=${sort_by}` : ""
-    }${
-      primary_release_year
-        ? `& primary_release_year=${primary_release_year}`
-        : ""
-    }`;
+    }${vote_average_lte ? `&vote_average.lte=${vote_average_lte}` : ""}`;
+
     this.api.getPopularMovies(query).then((response) => {
       const {
         data: { results, total_results },
