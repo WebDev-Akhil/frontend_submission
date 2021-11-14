@@ -20,9 +20,18 @@ Small Screen (Phones):
 4. Cypress was setup and linked with cypress account to see tests stats in the dashboard
 5. Minor style tweaks
 
+
+### 13/11/2021 - UPDATE (Weekend):
+
+1. Search and filter options are completely functioning. User can search for a keyword
+2. Added Search and filter options for small screens as well
+3. Added Genere data to Preview cards on discover page
+4. Cypress was setup and linked with cypress account to see tests stats in the dashboard
+
+
 ### FUTURE WORK:
 
-1. Search API was implemented but search bar still needs to be worked upon to accept user input and show results
+1. Cypreess Tests
 
 
 _________________________________________________________________
