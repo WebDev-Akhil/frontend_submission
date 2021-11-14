@@ -79,9 +79,10 @@ class ExpandableFilter extends React.Component {
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, isShow } = this.props;
+    console.log(isShow, "IS SHOW");
     return (
-      <AccordionWrapper>
+      <AccordionWrapper className={`${isShow && "show"}`}>
         {categories &&
           categories.map((category, index) => (
             <AccordionWrapperCont>
@@ -129,7 +130,11 @@ class ExpandableFilter extends React.Component {
   }
 }
 
-const AccordionWrapper = styled.div``;
+const AccordionWrapper = styled.div`
+  @media (max-width: 576px) {
+    display: none;
+  }
+`;
 
 const AccordionWrapperCont = styled.div`
   transition: all 0.6s ease-in-out;

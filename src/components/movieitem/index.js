@@ -1,10 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import * as colors from "../../colors";
+import { genres } from "../../constant";
 import "./index.scss";
 export default class MovieItem extends React.Component {
   state = {
     movieItem: "",
+  };
+
+  calculateGeneres = (generesIds) => {
+    const generesList = genres.filter((genres) =>
+      generesIds.includes(genres.id)
+    );
+    return generesList.map((item) => item.name).join(" | ");
   };
 
   render() {
@@ -25,7 +33,9 @@ export default class MovieItem extends React.Component {
             <MovieTitle>{movie?.title}</MovieTitle>
             <MovieRating bg={"yellowishBg"}>{movie?.vote_average}</MovieRating>
           </MovieHeader>
-          <MovieSubTitle color={"yellowishBg"}>{movie?.original_language}</MovieSubTitle>
+          <MovieSubTitle>
+            {this.calculateGeneres(movie.genre_ids)}
+          </MovieSubTitle>
           <MovieText className="text">{movie?.overview}</MovieText>
           <PublishDate color={"yellowishBg"}>{movie?.release_date}</PublishDate>
         </RightCont>
@@ -46,12 +56,19 @@ const LeftCont = styled.div`
   display: inline-block;
   width: 35%;
   padding: 20px;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 `;
 
 const RightCont = styled.div`
   display: inline-block;
   width: 65%;
   padding-right: 20px;
+  @media (max-width: 576px) {
+    width: 100%;
+    padding: 0px 20px;
+  }
 `;
 
 const MovieHeader = styled.div`
@@ -80,20 +97,18 @@ const MovieRating = styled.h6`
     props.bg === "yellowishBg" ? colors.yellowishBg : "none"};
 `;
 
-const MovieSubTitle = styled.span`
-  font-size: 14px;
-  font-weight: 800;
-  color: ${(props) =>
-  props.color === "yellowishBg" ? colors.yellowishBg : "black"}
-  `;
+const MovieSubTitle = styled.span``;
 
 const PublishDate = styled.span`
-  font-weight: 800;
   position: absolute;
   bottom: 8%;
   font-size: 12px;
   color: ${(props) =>
     props.color === "yellowishBg" ? colors.yellowishBg : "black"};
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const MovieText = styled.p`
